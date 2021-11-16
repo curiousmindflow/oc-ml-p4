@@ -1,0 +1,23 @@
+{
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.hg/store/**": true,
+        "**/data/**": true
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/__pycache__/**": true
+    },
+    "editor.hover.above": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "jupyter.jupyterServerType": "local",
+    "notebook.output.textLineLimit": 500
+}
