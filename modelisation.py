@@ -1,4 +1,39 @@
 # %% [markdown]
+# ***
+# # 1 Dependencies import
+
+# %% [markdown]
+# ## 1.0 Libraries
+
+# %%
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import warnings
+
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.metrics import silhouette_score
+from sklearn.metrics.cluster import adjusted_rand_score
+
+from yellowbrick.cluster import SilhouetteVisualizer, KElbowVisualizer
+
+import geopandas as gpd
+
+from math import ceil
+
+pd.set_option("display.max_columns", None)
+pd.set_option("display.max_rows", None)
+
+np.random.seed(0)
+
+# %% [markdown]
 # # 0 Configuration
 
 # %%
@@ -44,37 +79,6 @@ config = {
     }
 }
 
-# %% [markdown]
-# ***
-# # 1 Dependencies import
-
-# %% [markdown]
-# ## 1.0 Libraries
-
-# %%
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-import warnings
-
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler, MinMaxScaler
-from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
-from sklearn.metrics import silhouette_score
-
-from yellowbrick.cluster import SilhouetteVisualizer, KElbowVisualizer
-
-from math import ceil
-
-pd.set_option("display.max_columns", None)
-pd.set_option("display.max_rows", None)
-
-np.random.seed(0)
 
 # %% [markdown]
 # ***
@@ -1212,10 +1216,6 @@ if config["global"]["cluster_plot"]:
 # %% [markdown]
 # ### 5.3.1 Geoloc dataset preprocessing
 
-# %%
-
-
-import geopandas as gpd
 
 # %%
 re_write = False
@@ -1412,10 +1412,6 @@ if config["geo"]["per_cluster"]:
 # ***
 # ## 5.4 Maintenance
 
-# %%
-
-
-from sklearn.metrics.cluster import adjusted_rand_score
 
 # %%
 if config["maintenance"]["do"]:
@@ -1443,6 +1439,8 @@ def get_entire_period(dataset, temporal_index):
         np.timedelta64(1, 'M'))
 
 # %%
+
+
 def get_frame_(dataset, temporal_index, start, period):
     temporal_index = dataset[temporal_index]
     end = start + pd.DateOffset(months=period)
